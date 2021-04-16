@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/jsarr/CLionProjects/Project3B/Trie.cpp
+vector
+-
+Trie.h
+C:/Users/jsarr/CLionProjects/Project3B/Trie.h
+
+C:/Users/jsarr/CLionProjects/Project3B/Trie.h
+map
+-
+vector
+-
+

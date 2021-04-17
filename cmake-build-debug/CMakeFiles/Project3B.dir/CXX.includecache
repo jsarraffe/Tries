@@ -9,6 +9,8 @@
 C:/Users/jsarr/CLionProjects/Project3B/Trie.cpp
 vector
 -
+iostream
+-
 Trie.h
 C:/Users/jsarr/CLionProjects/Project3B/Trie.h
 
@@ -17,4 +19,10 @@ map
 -
 vector
 -
+
+C:/Users/jsarr/CLionProjects/Project3B/main.cpp
+iostream
+-
+Trie.h
+C:/Users/jsarr/CLionProjects/Project3B/Trie.h
 

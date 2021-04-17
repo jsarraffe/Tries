@@ -3,6 +3,7 @@
 //
 
 #include <vector>
+#include <iostream>
 #include "Trie.h"
 
 void Trie::insert(std::string word) {
@@ -25,7 +26,6 @@ void Trie::insertHelper(TrieNode *currNode, std::string word, int index) {
 }
 TrieNode* Trie::getNode(std::string word) {
     return getNodeHelper(root, word, 0);
-
 }
 TrieNode *Trie::getNodeHelper(TrieNode* curr, std::string word, int index) {
     if(index == word.length()){
@@ -46,36 +46,39 @@ bool Trie::search(std::string s) {
     return node != NULL && node->_isEndOfWord();
 }
 
-std::vector<TrieNode *> Trie::startWith(std::string prefix) {
-
-    auto * n = getNode(prefix);
-    std::vector<std::string> answer;
-
-    swHelper(n, prefix);
-
-}
-
-std::string Trie::swHelper(TrieNode *r, std::string prefix) {
-
-    std::string solution;
-    std::vector<std::string> s;
-    auto *curr = r;
-    std::string newPref = prefix;
-    for(int i = 0; i < r->getChildren().size(); i++)
-    {
-        if(curr->getChildren()[i]->_isEndOfWord()){
-            s.push_back(solution);
-            solution = prefix;
-        }
-
-        if(curr->getChildren()[i] != NULL){
-            newPref += curr->getChildren()[i]->_C();
-            curr = curr->getChildren()[i];
+std::vector<std::string> Trie::startWith(std::string prefix) {
+    auto start =  this->getNode("les");
+    std::vector<TrieNode*> rChildren;
+    for (auto *c : root->getChildren()){
+        if(c != NULL){
+            rChildren.push_back(c);
         }
     }
+    std::vector<std::vector<std::vector<TrieNode*>>> answer;
+    for(int i = 0; i < start->getChildren().size();i++){
+        answer.push_back(dfs(start->getChildren()[i]));
+    }
+
 }
+std::vector<std::vector<TrieNode *>>Trie::dfs(TrieNode * z) {
+
+    std::vector<TrieNode *> d;
 
 
+    for(int i = 0; i < 26; i++)
+    {
+        if(z->getChildren()[i] != NULL && z->getChildren()[i]->_isVisited() != true){
+            z->getChildren()[i]->_isVisited() = true;
+        };
+    }
 
+    for(auto *x : z->getChildren()){
+        if(x != NULL && x->_isVisited() != true) {
+            x->_isVisited() = true;
+            d.push_back(x);
+            dfs(x);
+        }
 
+    }
 
+}

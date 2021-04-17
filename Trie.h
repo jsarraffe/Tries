@@ -15,7 +15,6 @@ public:
      bool &_isEndOfWord(){return isEndOfWord;}
      char &_C(){return c;}
      bool &_isVisited(){return isVisited;}
-
      std::vector<TrieNode*> &getChildren(){return children;}
 
 
@@ -37,12 +36,16 @@ public:
     TrieNode* getNode(std::string word);
     TrieNode *getNodeHelper(TrieNode* curr, std::string word, int index);
     bool search(std::string word);
-    std::vector<std::vector<TrieNode *>> dfs(TrieNode *z);
+    void dfs(std::vector<TrieNode *>, std::vector<TrieNode *> &s);
     std::vector<std::string> startWith(std::string prefix);
-    std::vector<char> swHelper(TrieNode* r);
+    void dfsLocal(TrieNode *r, std::vector<std::string> &answer, std::string &suffix);
     TrieNode* root;
+    std::vector<TrieNode*> getNeihbors(TrieNode* n);
+
 
 private:
+
+    std::string prefix;
 
 };
 #endif //PROJECT3B_TRIE_H

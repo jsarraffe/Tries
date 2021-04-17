@@ -40,45 +40,47 @@ TrieNode *Trie::getNodeHelper(TrieNode* curr, std::string word, int index) {
     }
     return getNodeHelper(curr, word, index + 1);
 }
-
 bool Trie::search(std::string s) {
     auto *node = getNode(s);
     return node != NULL && node->_isEndOfWord();
 }
 
-std::vector<std::string> Trie::startWith(std::string prefix) {
-    auto start =  this->getNode("les");
-    std::vector<TrieNode*> rChildren;
-    for (auto *c : root->getChildren()){
+std::vector<TrieNode *> Trie::getNeihbors(TrieNode* n) {
+    std::vector<TrieNode*> neihbors;
+    for(auto &c : n->getChildren()){
         if(c != NULL){
-            rChildren.push_back(c);
+            neihbors.push_back(c);
         }
     }
-    std::vector<std::vector<std::vector<TrieNode*>>> answer;
-    for(int i = 0; i < start->getChildren().size();i++){
-        answer.push_back(dfs(start->getChildren()[i]));
-    }
-
+    return neihbors;
 }
-std::vector<std::vector<TrieNode *>>Trie::dfs(TrieNode * z) {
+std::vector<std::string> Trie::startWith(std::string prefix) {
+    auto n = getNode(prefix);
+    this->prefix = prefix;
+    std::vector<std::string> answer;
+    std::string suffix;
 
-    std::vector<TrieNode *> d;
-
-
-    for(int i = 0; i < 26; i++)
-    {
-        if(z->getChildren()[i] != NULL && z->getChildren()[i]->_isVisited() != true){
-            z->getChildren()[i]->_isVisited() = true;
-        };
+    if(n == NULL){
+        return answer;
     }
-
-    for(auto *x : z->getChildren()){
-        if(x != NULL && x->_isVisited() != true) {
-            x->_isVisited() = true;
-            d.push_back(x);
-            dfs(x);
+    auto nei = getNeihbors(n);
+    for (auto *v: nei)
+        {
+            dfsLocal(v, answer, suffix);
         }
-
-    }
-
+    return answer;
 }
+void Trie::dfsLocal(TrieNode *r, std::vector<std::string> &answer, std::string &suffix) {
+    if(r->_isEndOfWord()){
+        suffix += r->_C();
+        answer.push_back(prefix + suffix);
+        suffix.clear();
+        return;
+    }
+    for(auto i : getNeihbors(r)){
+            suffix += r->_C();
+            dfsLocal(i, answer, suffix);
+    }
+}
+
+

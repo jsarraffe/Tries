@@ -13,15 +13,11 @@ int main(int argc, char* argv[]) {
 
     auto *td = new Trie();
 
-    td->insert("lesbian");
-    td->insert("leseron");
-    td->insert("less");
+    td->insert("asshole");
+    td->insert("assthee");
 
-    auto z = td->getNode("les");
-    std::cout << z->_C() << std::endl;
-
-
-    td->startWith("les");
+    auto x = td->startWith("work");
+    std::cout << "dude" << std::endl;
 
 
 }

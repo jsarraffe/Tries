@@ -13,11 +13,18 @@ int main(int argc, char* argv[]) {
 
     auto *td = new Trie();
 
-    td->insert("asshole");
-    td->insert("assthee");
 
-    auto x = td->startWith("work");
-    std::cout << "dude" << std::endl;
+    td->insert("problem");
+    td->insert("processor");
+    td->insert("processors");
 
+    auto x = td->startWith("pro");
+
+
+    for(auto z : x)
+    {
+        std::cout << z <<std::endl;
+    }
+    std::cout << "asshole"<<std::endl;
 
 }

@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "C:/Users/jsarr/CLionProjects/Project3B/TST.cpp" "C:/Users/jsarr/CLionProjects/Project3B/cmake-build-debug/CMakeFiles/Project3B.dir/TST.cpp.obj"
   "C:/Users/jsarr/CLionProjects/Project3B/Trie.cpp" "C:/Users/jsarr/CLionProjects/Project3B/cmake-build-debug/CMakeFiles/Project3B.dir/Trie.cpp.obj"
   "C:/Users/jsarr/CLionProjects/Project3B/main.cpp" "C:/Users/jsarr/CLionProjects/Project3B/cmake-build-debug/CMakeFiles/Project3B.dir/main.cpp.obj"
   )

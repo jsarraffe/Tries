@@ -93,12 +93,12 @@ clean: CMakeFiles/Project3B.dir/clean
 CMakeFiles/Project3B.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project3B.dir\build.make CMakeFiles/Project3B.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project3B.dir\build.make CMakeFiles/Project3B.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\jsarr\CLionProjects\Project3B\cmake-build-debug\CMakeFiles --progress-num=1,2,3 "Built target Project3B"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\jsarr\CLionProjects\Project3B\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4 "Built target Project3B"
 .PHONY : CMakeFiles/Project3B.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Project3B.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\jsarr\CLionProjects\Project3B\cmake-build-debug\CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\jsarr\CLionProjects\Project3B\cmake-build-debug\CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Project3B.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\jsarr\CLionProjects\Project3B\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles/Project3B.dir/rule

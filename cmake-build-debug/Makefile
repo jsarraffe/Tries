@@ -142,6 +142,33 @@ Project3B/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project3B.dir\build.make CMakeFiles/Project3B.dir/build
 .PHONY : Project3B/fast
 
+TST.obj: TST.cpp.obj
+
+.PHONY : TST.obj
+
+# target to build an object file
+TST.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project3B.dir\build.make CMakeFiles/Project3B.dir/TST.cpp.obj
+.PHONY : TST.cpp.obj
+
+TST.i: TST.cpp.i
+
+.PHONY : TST.i
+
+# target to preprocess a source file
+TST.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project3B.dir\build.make CMakeFiles/Project3B.dir/TST.cpp.i
+.PHONY : TST.cpp.i
+
+TST.s: TST.cpp.s
+
+.PHONY : TST.s
+
+# target to generate assembly for a file
+TST.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Project3B.dir\build.make CMakeFiles/Project3B.dir/TST.cpp.s
+.PHONY : TST.cpp.s
+
 Trie.obj: Trie.cpp.obj
 
 .PHONY : Trie.obj
@@ -205,6 +232,9 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... Project3B
+	@echo ... TST.obj
+	@echo ... TST.i
+	@echo ... TST.s
 	@echo ... Trie.obj
 	@echo ... Trie.i
 	@echo ... Trie.s

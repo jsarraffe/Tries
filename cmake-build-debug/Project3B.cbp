@@ -80,6 +80,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/jsarr/CLionProjects/Project3B/TST.cpp">
+			<Option target="Project3B"/>
+		</Unit>
+		<Unit filename="C:/Users/jsarr/CLionProjects/Project3B/TST.h">
+			<Option target="Project3B"/>
+		</Unit>
 		<Unit filename="C:/Users/jsarr/CLionProjects/Project3B/Trie.cpp">
 			<Option target="Project3B"/>
 		</Unit>

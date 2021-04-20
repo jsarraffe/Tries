@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Project3B.dir/TST.cpp.obj"
   "CMakeFiles/Project3B.dir/Trie.cpp.obj"
   "CMakeFiles/Project3B.dir/main.cpp.obj"
   "Project3B.exe"

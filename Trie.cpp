@@ -44,7 +44,6 @@ bool Trie::search(std::string s) {
     auto *node = getNode(s);
     return node != NULL && node->_isEndOfWord();
 }
-
 std::vector<TrieNode *> Trie::getNeihbors(TrieNode* n) {
     std::vector<TrieNode*> neihbors;
     for(auto &c : n->getChildren()){
@@ -62,11 +61,15 @@ std::vector<std::string> Trie::startWith(std::string prefix) {
     if(n == NULL){
         return answer;
     }
+    if(n = getNode(prefix)){
+        answer.push_back(prefix);
+    }
     auto nei = getNeihbors(n);
     for (auto *v: nei){ dfsLocal(v, answer, suffix);}
     return answer;
 }
 void Trie::dfsLocal(TrieNode *r, std::vector<std::string> &answer, std::string &suffix) {
+
     if(r->_isEndOfWord()){
         suffix += r->_C();
         answer.push_back(prefix + suffix);
@@ -74,17 +77,12 @@ void Trie::dfsLocal(TrieNode *r, std::vector<std::string> &answer, std::string &
             suffix.clear();
             return;
         }
-
     }
     auto w = getNeihbors(r);
     for(auto i : w){
-
                 if(!r->_isEndOfWord()){
                     suffix += r->_C();
                 }
-
-
-
             dfsLocal(i, answer, suffix);
     }
 }

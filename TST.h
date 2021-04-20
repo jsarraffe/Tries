@@ -13,9 +13,6 @@ class tNode{
 public:
     tNode(char c): _C(c),left(nullptr), middle(nullptr), right(nullptr), isEndOfWord(false){}
     char &getChar(){return _C;}
-//    tNode *&_left(){return this->left;}
-//    tNode *&_right(){return this->right;}
-//    tNode *&_middle(){return this->middle;}
     tNode* &_left(){return this->left; }
     tNode* &_right(){return this->right; }
     tNode* &_middle(){return this->middle; }

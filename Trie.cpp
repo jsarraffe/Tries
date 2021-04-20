@@ -70,7 +70,6 @@ std::vector<std::string> Trie::startWith(std::string prefix) {
     return answer;
 }
 void Trie::dfsLocal(TrieNode *r, std::vector<std::string> &answer, std::string &suffix) {
-
     if(r->_isEndOfWord()){
         if(r = getNode(prefix)){
             answer.push_back(prefix);

@@ -23,56 +23,32 @@ tNode *TST::insertLocal(tNode *root, std::string s, int idx) {
     }
     return root;
 }
-
 void TST::insert(std::string s) {
     this->root = insertLocal(this->root, s, 0);
 }
 
-
-
 void TST::dfsLocal(std::vector<std::string> &answer, std::string suffix, tNode *rt) {
-
-    if(rt == NULL)
+    if(rt != nullptr)
     {
-
-        return;
+        dfsLocal(answer, suffix, rt->_left());
+        suffix += rt->getChar();
+        if(rt->_isEndOfWord()){answer.push_back(prefix + suffix);}
+        dfsLocal(answer, suffix, rt->_middle());
+        suffix.pop_back();
+        dfsLocal(answer, suffix, rt->_right());
     }
 
-    suffix += rt->getChar();
-    if(rt->_isEndOfWord()) {
-        answer.push_back(prefix + suffix);
-    }
-
-    dfsLocal(answer, suffix, rt->_left());
-
-
-    dfsLocal(answer, suffix, rt->_middle());
-
-    suffix.clear();
-    dfsLocal(answer, suffix, rt->_right());
 
 }
-
 void TST::dfs(tNode *rt) {
-
     std::vector<std::string> answer;
     std::string suffix;
-
-    if(rt == getNode(this->_prefix()))
-    {
-        answer.push_back(prefix);
-    }
     dfsLocal(answer, suffix, rt->_left());
-    suffix.clear();
     dfsLocal(answer, suffix, rt->_middle());
-    suffix.clear();
     dfsLocal(answer, suffix, rt->_right());
-    suffix.clear();
-
+    std::cout << "dkchz" <<std::endl;
 
 }
-
-
 tNode* TST::getNode(std::string prefix) {
     //first search for the node where the prefix matches, do dfs from there
     this->_prefix() = prefix;
@@ -95,19 +71,14 @@ tNode* TST::getNode(std::string prefix) {
         } else { std::cout << "You have failed"<<std::endl; }
     }
     this->_nodeToDFSfrom(prev);
-
-
+    std::cout << "ah you gay" << std::endl;
    return prev;
-
 }
 
+
 tNode *TST::startsWith(std::string prefix) {
-
     auto *n = getNode(prefix);
-
     dfs(n);
-
-
     return nullptr;
 }
 

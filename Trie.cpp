@@ -61,16 +61,20 @@ std::vector<std::string> Trie::startWith(std::string prefix) {
     if(n == NULL){
         return answer;
     }
-    if(n = getNode(prefix)){
-        answer.push_back(prefix);
-    }
+//    if(n = getNode(prefix)){
+//        answer.push_back(prefix);
+//    }
     auto nei = getNeihbors(n);
-    for (auto *v: nei){ dfsLocal(v, answer, suffix);}
+    for (auto *v: nei){
+        dfsLocal(v, answer, suffix);}
     return answer;
 }
 void Trie::dfsLocal(TrieNode *r, std::vector<std::string> &answer, std::string &suffix) {
 
     if(r->_isEndOfWord()){
+        if(r = getNode(prefix)){
+            answer.push_back(prefix);
+        }
         suffix += r->_C();
         answer.push_back(prefix + suffix);
         if(getNeihbors(r).empty()){

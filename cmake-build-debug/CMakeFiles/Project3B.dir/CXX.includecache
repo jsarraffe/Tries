@@ -6,16 +6,16 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/jsarr/CLionProjects/Project3B/Trie.cpp
+C:/Users/jsarr/CLionProjects/Project3B/TST.cpp
+TST.h
+C:/Users/jsarr/CLionProjects/Project3B/TST.h
+iostream
+C:/Users/jsarr/CLionProjects/Project3B/iostream
 vector
 -
-iostream
--
-Trie.h
-C:/Users/jsarr/CLionProjects/Project3B/Trie.h
 
-C:/Users/jsarr/CLionProjects/Project3B/Trie.h
-map
+C:/Users/jsarr/CLionProjects/Project3B/TST.h
+string
 -
 vector
 -

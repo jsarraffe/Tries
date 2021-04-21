@@ -28,7 +28,7 @@ int main(int argc, char* argv[]) {
         words.push_back(word);
         word.clear();
     }
-    std::cout << "breakpoint" << std::endl;
+    std::cout << " " << std::endl;
 
     //ask for help
 
@@ -55,24 +55,43 @@ int main(int argc, char* argv[]) {
 //    }
 //    std::cout << "_________________"<<std::endl;
 
-    auto *td = new TST();
+    auto *tst = new TST();
+    auto *trie = new Trie();
 
-//    td->insert("foo");
-//    td->insert("food");
-//    td->insert("fun");
-//    td->insert("funky");
-//    td->insert("funny");
+//    tst->insert("foo");
+//    tst->insert("food");
+//    tst->insert("fun");
+//    tst->insert("funny");
+//    tst->insert("funky");
+//    tst->insert("computing");
+//    tst->insert("comprised");
+//    tst->insert("consider");
+//    tst->insert("problem");
+//    tst->insert("processor");
+//    tst->insert("processors");
 
 
-    td->insert("computing");
-    td->insert("comprised");
-    td->insert("consider");
-
+    trie->insert("foo");
+    trie->insert("food");
+    trie->insert("fun");
+    trie->insert("funny");
+    trie->insert("funky");
     std::vector<std::string> answer;
-    td->startsWith("co");
+
+//    std::cout << "For TST" << std::endl;
+//    for(auto i : tst->startsWith("pro"))
+//    {
+//        std::cout << i << " ";
+//    }
+    auto x = trie->startsWith("fun");
+    std::cout << "For TrieNode" << std::endl;
+    for(auto j : trie->startsWith("fo"))
+    {
+        std::cout << j << " ";
+    }
 
 
-    std::cout <<"fuck you" << std::endl;
+    std::cout <<" " << std::endl;
 
 
 }

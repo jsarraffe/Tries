@@ -37,7 +37,7 @@ public:
     TrieNode *getNodeHelper(TrieNode* curr, std::string word, int index);
     bool search(std::string word);
     void dfs(std::vector<TrieNode *>, std::vector<TrieNode *> &s);
-    std::vector<std::string> startWith(std::string prefix);
+    std::vector<std::string> startsWith(std::string prefix);
     void dfsLocal(TrieNode *r, std::vector<std::string> &answer, std::string &suffix);
     TrieNode* root;
     std::vector<TrieNode*> getNeihbors(TrieNode* n);

@@ -6,17 +6,37 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/jsarr/CLionProjects/Project3B/TST.cpp
-TST.h
-C:/Users/jsarr/CLionProjects/Project3B/TST.h
-iostream
-C:/Users/jsarr/CLionProjects/Project3B/iostream
-vector
--
-
 C:/Users/jsarr/CLionProjects/Project3B/TST.h
 string
 -
 vector
+-
+
+C:/Users/jsarr/CLionProjects/Project3B/Trie.h
+map
+-
+vector
+-
+
+C:/Users/jsarr/CLionProjects/Project3B/main.cpp
+iostream
+-
+Trie.h
+C:/Users/jsarr/CLionProjects/Project3B/Trie.h
+TST.h
+C:/Users/jsarr/CLionProjects/Project3B/TST.h
+fstream
+-
+string
+-
+vector
+-
+cctype
+-
+string
+-
+functional
+-
+algorithm
 -
 

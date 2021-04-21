@@ -53,7 +53,7 @@ std::vector<TrieNode *> Trie::getNeihbors(TrieNode* n) {
     }
     return neihbors;
 }
-std::vector<std::string> Trie::startWith(std::string prefix) {
+std::vector<std::string> Trie::startsWith(std::string prefix) {
     auto n = getNode(prefix);
     this->prefix = prefix;
     std::vector<std::string> answer;
@@ -61,19 +61,20 @@ std::vector<std::string> Trie::startWith(std::string prefix) {
     if(n == NULL){
         return answer;
     }
-//    if(n = getNode(prefix)){
-//        answer.push_back(prefix);
-//    }
     auto nei = getNeihbors(n);
+    if(n->_isEndOfWord())
+    {
+        answer.push_back(prefix);
+    }
     for (auto *v: nei){
         dfsLocal(v, answer, suffix);}
     return answer;
 }
 void Trie::dfsLocal(TrieNode *r, std::vector<std::string> &answer, std::string &suffix) {
     if(r->_isEndOfWord()){
-        if(r = getNode(prefix)){
-            answer.push_back(prefix);
-        }
+//        if(r = getNode(prefix)){
+//            answer.push_back(prefix);
+//        }
         suffix += r->_C();
         answer.push_back(prefix + suffix);
         if(getNeihbors(r).empty()){

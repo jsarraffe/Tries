@@ -36,8 +36,8 @@ public:
 
     tNode *getNode(std::string prefix);
 
-    tNode *startsWith(std::string prefix);
-    void dfs(tNode *root);
+    std::vector<std::string> startsWith(std::string prefix);
+    std::vector<std::string> dfsWord(tNode *root);
 
 
 

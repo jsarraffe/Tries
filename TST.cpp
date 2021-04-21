@@ -28,7 +28,10 @@ void TST::insert(std::string s) {
 }
 
 void TST::dfsLocal(std::vector<std::string> &answer, std::string suffix, tNode *rt) {
-    if(rt != nullptr)
+    //dfs for leaf nodes in all subtrees, and those that are words
+    if(rt == nullptr){
+        return;
+    }
     {
         dfsLocal(answer, suffix, rt->_left());
         suffix += rt->getChar();
@@ -37,16 +40,12 @@ void TST::dfsLocal(std::vector<std::string> &answer, std::string suffix, tNode *
         suffix.pop_back();
         dfsLocal(answer, suffix, rt->_right());
     }
-
-
 }
-void TST::dfs(tNode *rt) {
+std::vector<std::string> TST::dfsWord(tNode *rt) {
     std::vector<std::string> answer;
     std::string suffix;
-    dfsLocal(answer, suffix, rt->_left());
     dfsLocal(answer, suffix, rt->_middle());
-    dfsLocal(answer, suffix, rt->_right());
-    std::cout << "dkchz" <<std::endl;
+    return answer;
 
 }
 tNode* TST::getNode(std::string prefix) {
@@ -68,19 +67,21 @@ tNode* TST::getNode(std::string prefix) {
         if (curr != nullptr) {
             prev = curr;
             curr = curr->_middle();
-        } else { std::cout << "You have failed"<<std::endl; }
+        } else { return nullptr; }
     }
     this->_nodeToDFSfrom(prev);
-    std::cout << "ah you gay" << std::endl;
+    //std::cout << "Debug test" << std::endl;
    return prev;
 }
 
+std::vector<std::string> TST::startsWith(std::string prefix) {
 
-tNode *TST::startsWith(std::string prefix) {
-    auto *n = getNode(prefix);
-    dfs(n);
-    return nullptr;
+        auto *n = getNode(prefix);
+
+        return dfsWord(n);;
+
 }
+
 
 
 

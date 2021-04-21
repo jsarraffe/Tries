@@ -1,12 +1,11 @@
 #include <iostream>
 #include "Trie.h"
 #include "TST.h"
-
 #include <fstream>
 #include <string>
 #include <vector>
 #include <cctype>
-#include <string>
+#include <chrono>
 #include <functional>
 #include <algorithm>
 
@@ -17,7 +16,7 @@ int main(int argc, char* argv[]) {
     if (argc != 1) {
         std::cout << "ERROR: You need to pass an argument";
     }
-    std::ifstream fp( "test.txt" );
+    std::ifstream fp( "test2.txt" );
     std::string s;
     std::vector<std::string> words;
 
@@ -30,64 +29,46 @@ int main(int argc, char* argv[]) {
     }
     std::cout << " " << std::endl;
 
-    //ask for help
-
-//
-//    auto *td = new Trie();
-//    td->insert("problem");
-//    td->insert("processor");
-//    td->insert("processors");
-//    td->insert("foo");
-//    td->insert("food");
-//    td->insert("fun");
-//    td->insert("funky");
-//    td->insert("funny");
-
-//    td->insert("computing");
-//    td->insert("comprised");
-//    td->insert("consider");
-//    auto x = td->startWith("fun");
-//
-//
-//    for(auto z : x)
-//    {
-//        std::cout << z <<std::endl;
-//    }
-//    std::cout << "_________________"<<std::endl;
-
     auto *tst = new TST();
     auto *trie = new Trie();
 
-//    tst->insert("foo");
-//    tst->insert("food");
-//    tst->insert("fun");
-//    tst->insert("funny");
-//    tst->insert("funky");
-//    tst->insert("computing");
-//    tst->insert("comprised");
-//    tst->insert("consider");
-//    tst->insert("problem");
-//    tst->insert("processor");
-//    tst->insert("processors");
-
-
-    trie->insert("foo");
-    trie->insert("food");
-    trie->insert("fun");
-    trie->insert("funny");
-    trie->insert("funky");
-    std::vector<std::string> answer;
-
-//    std::cout << "For TST" << std::endl;
-//    for(auto i : tst->startsWith("pro"))
+//    for(auto word : words)
 //    {
-//        std::cout << i << " ";
+//        tst->insert(word);
 //    }
-    auto x = trie->startsWith("fun");
-    std::cout << "For TrieNode" << std::endl;
-    for(auto j : trie->startsWith("fo"))
+//
+//    for(auto word : words)
+//    {
+//        trie->insert(word);
+//    }
+
+
+    tst->insert("scheduling");
+    tst->insert("set");
+    tst->insert("so");
+    tst->insert("specific");
+    tst->insert("sum");
+
+    trie->insert("scheduling");
+    trie->insert("set");
+    trie->insert("so");
+    trie->insert("specific");
+    trie->insert("sum");
+
+
+    std::string prefix = "s";
+
+
+    std::cout << "For TST" << std::endl;
+    for(auto i : tst->startsWith(prefix))
     {
-        std::cout << j << " ";
+        std::cout << i << ", ";
+    }
+    std::cout<<std::endl;
+    std::cout << "For TrieNode:" << std::endl;
+    for(auto j : trie->startsWith(prefix))
+    {
+        std::cout << j << ", ";
     }
 
 

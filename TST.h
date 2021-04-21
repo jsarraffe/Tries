@@ -50,6 +50,8 @@ public:
 
     tNode _nodeToDFSfrom(tNode *ntdfs){nodeToDFSfom = ntdfs;}
 
+    bool searcj(std::string word);
+
 private:
 
     std::string prefix;

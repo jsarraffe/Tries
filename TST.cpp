@@ -10,7 +10,7 @@ tNode *TST::insertLocal(tNode *root, std::string s, int idx) {
     if (root == NULL) {
         root = new tNode(s[idx]);
     }
-    if (idx >= s.size() - 1) {
+    if (idx > s.size() - 1) {
         root->_isEndOfWord() = true;
     } else {
         if (s[idx] < root->getChar()) {
@@ -73,19 +73,19 @@ tNode* TST::getNode(std::string prefix) {
     //std::cout << "Debug test" << std::endl;
    return prev;
 }
-
 std::vector<std::string> TST::startsWith(std::string prefix) {
-
         auto *n = getNode(prefix);
+        auto temp = n;
 
-        return dfsWord(n);;
-
+        if(getNode(prefix) == NULL){
+            return std::vector<std::string>();
+        }
+        auto ans = dfsWord(n);
+        if(temp->_isEndOfWord()){
+            ans.insert(ans.begin(), prefix);
+        }
+        return ans;
 }
-
-
-
-
-
-
-
-
+bool TST::searcj(std::string word) {
+    return getNode(word) != NULL;
+}

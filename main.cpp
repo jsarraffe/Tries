@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
     auto *tst = new TST();
     auto *trie = new Trie();
 
-//
+
     auto autoCompleteInitTST = std::chrono::steady_clock::now();
     tst->buildTST(words);
     auto autoCompleteFinishTST = std::chrono::steady_clock::now();
@@ -58,9 +58,23 @@ int main(int argc, char* argv[]) {
     auto autoCompleteTimeTrie =  std::chrono::duration_cast<std::chrono::microseconds>(autoCompleteFinishTrie - autoCompleteInitTrie);
 
     std::cout << "Time taken to build the standard Trie is " <<  autoCompleteTimeTrie.count() << " microseconds and space occupied by it is ";
-    std::cout << std::endl;
 
-    std::string prefix = "s";
+
+std::cout << std::endl;
+
+//
+//    tst->insert("shield");
+//    tst->insert("shield");
+//    tst->insert("shield");
+//    tst->insert("shield");
+//    tst->insert("shield");
+//
+//    tst->insert("shield");
+
+
+
+
+    std::string prefix = "go";
     std::cout << std::endl;
     auto x =  tst->startsWith(prefix);
     std::cout << "For TST" << std::endl;

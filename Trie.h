@@ -16,10 +16,6 @@ public:
      char &_C(){return c;}
      bool &_isVisited(){return isVisited;}
      std::vector<TrieNode*> &getChildren(){return children;}
-
-    bool needCurrPredix = false;
-
-
 private:
     std::vector<TrieNode*> children;
     char c;
@@ -43,15 +39,11 @@ public:
     void dfsLocal(TrieNode *r, std::vector<std::string> &answer, std::string &suffix);
     TrieNode* root;
     std::vector<TrieNode*> getNeihbors(TrieNode* n);
-    
     void buildTrie(std::vector<std::string> words);
+    int &_numNodesInTree(){return numNodesInTree;}
 
-    std::string OGprefix;
-
-
-    std::string currPrefix;
 private:
-
+    int numNodesInTree = 1;
     std::string prefix;
 
 };

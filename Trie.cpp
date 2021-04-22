@@ -17,6 +17,7 @@ void Trie::insertHelper(TrieNode *currNode, std::string word, int index) {
     }
     char c = word[index];
     if (currNode->getChildren()[c - 'a'] == NULL) {
+        this->_numNodesInTree()++;
         currNode->getChildren()[c - 'a'] = new TrieNode(c);
         currNode = currNode->getChildren()[c - 'a'];
     } else {
@@ -61,7 +62,6 @@ std::vector<TrieNode *> Trie::getNeihbors(TrieNode *n) {
 std::vector<std::string> Trie::startsWith(std::string prefix) {
     auto n = getNode(prefix);
     this->prefix = prefix;
-    OGprefix = prefix;
     std::vector<std::string> answer;
     std::string suffix;
     if (n == NULL) {
@@ -86,31 +86,6 @@ void Trie::dfsLocal(TrieNode *r, std::vector<std::string> &answer, std::string &
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//    if(r->_isEndOfWord()){
-//        answer.push_back(prefix + suffix);
-//    }
-//    auto w = getNeihbors(r);
-//    for(auto i : w){
-//        if(i != nullptr){
-//            suffix += i->_C();
-//            dfsLocal(i, answer, suffix);
-//            suffix.pop_back();
-//        }
-//    }
 }
 
 void Trie::buildTrie(std::vector<std::string> words) {

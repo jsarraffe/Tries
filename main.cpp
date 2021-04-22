@@ -28,12 +28,13 @@ int main(int argc, char* argv[]) {
         std::string word;
         for(auto c : s) { word += std::tolower(c);}
 
-        if(std::find(words.begin(), words.end(), word) == words.end()) {
+
+//        if(std::find(words.begin(), words.end(), word) == words.end()) {
             words.push_back(word);
             word.clear();
-        } else {
-            continue;
-        }
+//        } else {
+//            continue;
+//        }
     }
 
     fp.close();
@@ -59,27 +60,9 @@ int main(int argc, char* argv[]) {
     std::cout << "Time taken to build the standard Trie is " <<  autoCompleteTimeTrie.count() << " microseconds and space occupied by it is ";
     std::cout << std::endl;
 
-
-    //tst->buildTST(words);
-//   trie->buildTrie(words);
-    std::string prefix = "de";
-
-
+    std::string prefix = "go";
     std::cout << std::endl;
-
-
-
-//    tst->insert("going");
-//
-//    tst->insert("go");
-//
-//    tst->insert("good");
-//
-//    tst->insert("got");
-
     auto x =  tst->startsWith(prefix);
-
-
     std::cout << "For TST" << std::endl;
     for(auto i : x)
     {
@@ -92,7 +75,6 @@ int main(int argc, char* argv[]) {
     {
         std::cout << j << ", "; i++;
     }
-//    std::cout<<i<<std::endl;
     std::cout <<" " << std::endl;
 
 

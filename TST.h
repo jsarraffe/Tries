@@ -20,9 +20,9 @@ public:
     void setright(tNode* n){this->right = n; }
     void setmiddle(tNode* n){this->middle = n; }
     bool &_isEndOfWord(){return this->isEndOfWord;}
-    bool &isDup(){return this->avoidDup;}
+
+
 private:
-    bool avoidDup = false;
     char _C;
     tNode *left;
     tNode *middle;
@@ -31,36 +31,24 @@ private:
 };
 class TST {
 public:
-
-
     TST(): root(nullptr){}
-
     tNode *getNode(std::string prefix);
-
     std::vector<std::string> startsWith(std::string prefix);
     std::vector<std::string> dfsWord(tNode *root);
-
-
     void buildTST(std::vector<std::string> words);
-
     void dfsLocal(std::vector<std::string> &answer, std::string suffix, tNode *rt);
-
     std::string &_prefix(){return prefix;}
-
     void insert(std::string s);
     tNode *insertLocal(tNode *root, std::string s, int idx);
-
     tNode _nodeToDFSfrom(tNode *ntdfs){nodeToDFSfom = ntdfs;}
-
     bool searcj(std::string word);
+    int &_numNodesInTree(){return numNodesInTree;}
 
 private:
-
+    int numNodesInTree;
     std::string prefix;
     tNode *nodeToDFSfom;
     tNode *root;
-
-
 };
 
 

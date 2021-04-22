@@ -14,7 +14,6 @@ tNode *TST::insertLocal(tNode *rt, std::string s, int idx) {
             return rt;
         }
     }
-
     if (s[idx] < rt->getChar()) {
         rt->setleft((insertLocal(rt->_left(), s, idx)));
     } else if (s[idx] > rt->getChar()) {
@@ -22,8 +21,6 @@ tNode *TST::insertLocal(tNode *rt, std::string s, int idx) {
     } else {
         if(idx == s.size()-1) rt->_isEndOfWord() = true;
         rt->setmiddle(insertLocal(rt->_middle(), s, idx + 1));
-
-
     }
     return rt;
 }
@@ -32,7 +29,6 @@ void TST::insert(std::string s) {
 
     this->root = insertLocal(this->root, s, 0);
 }
-
 void TST::dfsLocal(std::vector<std::string> &answer, std::string suffix, tNode *rt) {
     //dfs for leaf nodes in all subtrees, and those that are words
     if(rt == nullptr){

@@ -60,7 +60,7 @@ int main(int argc, char* argv[]) {
     std::cout << "Time taken to build the standard Trie is " <<  autoCompleteTimeTrie.count() << " microseconds and space occupied by it is ";
     std::cout << std::endl;
 
-    std::string prefix = "go";
+    std::string prefix = "s";
     std::cout << std::endl;
     auto x =  tst->startsWith(prefix);
     std::cout << "For TST" << std::endl;

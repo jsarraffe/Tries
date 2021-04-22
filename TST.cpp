@@ -6,22 +6,25 @@
 #include "iostream"
 #include <vector>
 
-tNode *TST::insertLocal(tNode *root, std::string s, int idx) {
-    if (root == NULL) {
-        root = new tNode(s[idx]);
-    }
-    if (idx > s.size() - 1) {
-        root->_isEndOfWord() = true;
-    } else {
-        if (s[idx] < root->getChar()) {
-            root->setleft((insertLocal(root->_left(), s, idx)));
-        } else if (s[idx] > root->getChar()) {
-            root->setright(insertLocal(root->_right(), s, idx));
-        } else {
-            root->setmiddle(insertLocal(root->_middle(), s, idx + 1));
+tNode *TST::insertLocal(tNode *rt, std::string s, int idx) {
+    if (rt == NULL) {
+        rt = new tNode(s[idx]);
+        if (idx >= s.size() - 1) {
+            rt->_isEndOfWord() = true;
+            return rt;
         }
     }
-    return root;
+
+    if (s[idx] < rt->getChar()) {
+        rt->setleft((insertLocal(rt->_left(), s, idx)));
+    } else if (s[idx] > rt->getChar()) {
+        rt->setright(insertLocal(rt->_right(), s, idx));
+    } else {
+        rt->setmiddle(insertLocal(rt->_middle(), s, idx + 1));
+
+    }
+
+    return rt;
 }
 void TST::insert(std::string s) {
     this->root = insertLocal(this->root, s, 0);
@@ -35,7 +38,8 @@ void TST::dfsLocal(std::vector<std::string> &answer, std::string suffix, tNode *
     {
         dfsLocal(answer, suffix, rt->_left());
         suffix += rt->getChar();
-        if(rt->_isEndOfWord()){answer.push_back(prefix + suffix);}
+        if(rt->_isEndOfWord()){
+            answer.push_back(prefix + suffix);}
         dfsLocal(answer, suffix, rt->_middle());
         suffix.pop_back();
         dfsLocal(answer, suffix, rt->_right());
@@ -86,6 +90,10 @@ std::vector<std::string> TST::startsWith(std::string prefix) {
         }
         return ans;
 }
-bool TST::searcj(std::string word) {
-    return getNode(word) != NULL;
+void TST::buildTST(std::vector<std::string> words) {
+
+    for(auto i : words){
+        this->insert(i);
+    }
+
 }

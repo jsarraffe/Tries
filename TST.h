@@ -40,6 +40,7 @@ public:
     std::vector<std::string> dfsWord(tNode *root);
 
 
+    void buildTST(std::vector<std::string> words);
 
     void dfsLocal(std::vector<std::string> &answer, std::string suffix, tNode *rt);
 

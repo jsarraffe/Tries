@@ -32,19 +32,48 @@ int main(int argc, char* argv[]) {
     auto *tst = new TST();
     auto *trie = new Trie();
 
-//    for(auto word : words)
-//    {
-//        tst->insert(word);
-//    }
+
+//    auto autoCompleteInitTST = std::chrono::steady_clock::now();
+//    tst->buildTST(words);
+//    auto autoCompleteFinishTST = std::chrono::steady_clock::now();
+//    auto autoCompleteTimeTST =  std::chrono::duration_cast<std::chrono::microseconds>(autoCompleteFinishTST - autoCompleteInitTST);
+//    std::cout << "Time taken to build the standard Trie is " <<  autoCompleteTimeTST.count() << " microseconds and space occupied by it is ";
 //
-//    for(auto word : words)
-//    {
-//        trie->insert(word);
-//    }
+//    std::cout<<std::endl;
+//
+//    auto autoCompleteInitTrie = std::chrono::steady_clock::now();
+//    trie->buildTrie(words);
+//    auto autoCompleteFinishTrie = std::chrono::steady_clock::now();
+//    auto autoCompleteTimeTrie =  std::chrono::duration_cast<std::chrono::microseconds>(autoCompleteFinishTrie - autoCompleteInitTrie);
+//
+//    std::cout << "Time taken to build the standard Trie is " <<  autoCompleteTimeTrie.count() << " microseconds and space occupied by it is ";
+
+   std::cout << std::endl;
+    //tst->buildTST(words);
+//   trie->buildTrie(words);
+
+    tst->insert("foo");
+    tst->insert("fo");
+    tst->insert("as");
+    tst->insert("food");
+    tst->insert("fun");
+    tst->insert("funky");
+    tst->insert("funny");
+
+
+    trie->insert("foo");
+    trie->insert("fo");
+    trie->insert("as");
+    trie->insert("food");
+    trie->insert("fun");
+    trie->insert("funky");
+    trie->insert("funny");
+
 
 
     tst->insert("scheduling");
     tst->insert("set");
+    std::cout << " " << std::endl;
     tst->insert("so");
     tst->insert("specific");
     tst->insert("sum");
@@ -52,9 +81,23 @@ int main(int argc, char* argv[]) {
     trie->insert("scheduling");
     trie->insert("set");
     trie->insert("so");
+    std::cout << " " << std::endl;
     trie->insert("specific");
     trie->insert("sum");
 
+    trie->insert("comprised");
+    trie->insert("computing");
+    trie->insert("consider");
+    tst->insert("comprised");
+    tst->insert("computing");
+    tst->insert("consider");
+
+    tst->insert("processors");
+    tst->insert("processor");
+    tst->insert("problem");
+    trie->insert("processors");
+    trie->insert("processor");
+    trie->insert("problem");
 
     std::string prefix = "s";
 
@@ -70,8 +113,6 @@ int main(int argc, char* argv[]) {
     {
         std::cout << j << ", ";
     }
-
-
     std::cout <<" " << std::endl;
 
 

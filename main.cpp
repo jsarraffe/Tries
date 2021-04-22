@@ -8,31 +8,49 @@
 #include <chrono>
 #include <functional>
 #include <algorithm>
+#include <algorithm>
 
 
-
+void remove_duplicates(std::vector<std::string>& vec)
+{
+    std::sort(vec.begin(), vec.end());
+    vec.erase(std::unique(vec.begin(), vec.end()), vec.end());
+}
 
 int main(int argc, char* argv[]) {
-    if (argc != 1) {
-        std::cout << "ERROR: You need to pass an argument";
+    if (argc != 2) {
+        std::cout << "ERROR: Enter <filename   flag>";
+//        exit(1);
     }
-    std::ifstream fp( "test2.txt" );
+    std::string filename = argv[1];
+    std::cout<<filename<<std::endl;
+    int flag = atoi(argv[2]);
+    std::ifstream fp;
     std::string s;
     std::vector<std::string> words;
 
-    while (fp>> s){
+    fp.open (argv[1], std::ios::out | std::ios::app | std::ios::binary);
+
+    while (fp>> s ){
         s.erase(std::remove_if(s.begin(), s.end(), [](char c) { return !std::isalnum(c); }), s.end());
         std::string word;
         for(auto c : s) { word += std::tolower(c);}
-        words.push_back(word);
-        word.clear();
+
+        if(std::find(words.begin(), words.end(), word) == words.end()) {
+            words.push_back(word);
+            word.clear();
+        } else {
+            continue;
+        }
     }
+
+    fp.close();
     std::cout << " " << std::endl;
 
     auto *tst = new TST();
     auto *trie = new Trie();
 
-
+////
 //    auto autoCompleteInitTST = std::chrono::steady_clock::now();
 //    tst->buildTST(words);
 //    auto autoCompleteFinishTST = std::chrono::steady_clock::now();
@@ -45,74 +63,51 @@ int main(int argc, char* argv[]) {
 //    trie->buildTrie(words);
 //    auto autoCompleteFinishTrie = std::chrono::steady_clock::now();
 //    auto autoCompleteTimeTrie =  std::chrono::duration_cast<std::chrono::microseconds>(autoCompleteFinishTrie - autoCompleteInitTrie);
-//
-//    std::cout << "Time taken to build the standard Trie is " <<  autoCompleteTimeTrie.count() << " microseconds and space occupied by it is ";
 
-   std::cout << std::endl;
+//    std::cout << "Time taken to build the standard Trie is " <<  autoCompleteTimeTrie.count() << " microseconds and space occupied by it is ";
+//    std::cout << std::endl;
+
+
     //tst->buildTST(words);
 //   trie->buildTrie(words);
-
-    tst->insert("foo");
-    tst->insert("fo");
-    tst->insert("as");
-    tst->insert("food");
-    tst->insert("fun");
-    tst->insert("funky");
-    tst->insert("funny");
+    std::string prefix = "go";
 
 
-    trie->insert("foo");
-    trie->insert("fo");
-    trie->insert("as");
-    trie->insert("food");
-    trie->insert("fun");
-    trie->insert("funky");
-    trie->insert("funny");
+    std::cout << std::endl;
 
 
 
-    tst->insert("scheduling");
-    tst->insert("set");
-    std::cout << " " << std::endl;
-    tst->insert("so");
-    tst->insert("specific");
-    tst->insert("sum");
+    tst->insert("going");
 
-    trie->insert("scheduling");
-    trie->insert("set");
-    trie->insert("so");
-    std::cout << " " << std::endl;
-    trie->insert("specific");
-    trie->insert("sum");
+    tst->insert("go");
 
-    trie->insert("comprised");
-    trie->insert("computing");
-    trie->insert("consider");
-    tst->insert("comprised");
-    tst->insert("computing");
-    tst->insert("consider");
+    tst->insert("good");
 
-    tst->insert("processors");
-    tst->insert("processor");
-    tst->insert("problem");
-    trie->insert("processors");
-    trie->insert("processor");
-    trie->insert("problem");
+    tst->insert("got");
 
-    std::string prefix = "s";
+//    trie->insert("sawn");
+//    trie->insert("sheltered");
+//    trie->insert("shield");
+//    trie->insert("shield");
+
+
+
+    auto x =  tst->startsWith(prefix);
 
 
     std::cout << "For TST" << std::endl;
-    for(auto i : tst->startsWith(prefix))
+    for(auto i : x)
     {
         std::cout << i << ", ";
     }
     std::cout<<std::endl;
     std::cout << "For TrieNode:" << std::endl;
+    int i ;
     for(auto j : trie->startsWith(prefix))
     {
-        std::cout << j << ", ";
+        std::cout << j << ", "; i++;
     }
+//    std::cout<<i<<std::endl;
     std::cout <<" " << std::endl;
 
 

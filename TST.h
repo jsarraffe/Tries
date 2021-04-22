@@ -20,8 +20,9 @@ public:
     void setright(tNode* n){this->right = n; }
     void setmiddle(tNode* n){this->middle = n; }
     bool &_isEndOfWord(){return this->isEndOfWord;}
-
+    bool &isDup(){return this->avoidDup;}
 private:
+    bool avoidDup = false;
     char _C;
     tNode *left;
     tNode *middle;

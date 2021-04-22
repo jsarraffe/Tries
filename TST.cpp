@@ -8,8 +8,9 @@
 
 tNode *TST::insertLocal(tNode *rt, std::string s, int idx) {
     if (rt == NULL) {
-        if(idx > s.size() - 1) return rt;
+        if(idx > s.size() - 1) { this->_numNodesInTree()-s.size();return rt;}
         rt = new tNode(s[idx]);
+        this->_numNodesInTree()++;
         if (idx >= s.size() - 1) {
             rt->_isEndOfWord() = true;
             return rt;
@@ -22,7 +23,7 @@ tNode *TST::insertLocal(tNode *rt, std::string s, int idx) {
         rt->setright(insertLocal(rt->_right(), s, idx));
 
     } else {
-        if(idx == s.size()-1) rt->_isEndOfWord() = true;
+        if(idx == s.size()-1) {rt->_isEndOfWord() = true;}
         rt->setmiddle(insertLocal(rt->_middle(), s, idx + 1));
     }
     return rt;

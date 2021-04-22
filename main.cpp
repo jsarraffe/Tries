@@ -9,29 +9,29 @@
 #include <functional>
 #include <algorithm>
 
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
         std::cout << "ERROR: Enter <filename   flag>";
-//        exit(1);
+        exit(1);
     }
     std::string filename = argv[1];
-    std::cout<<filename<<std::endl;
+    std::cout << filename << std::endl;
     int flag = atoi(argv[2]);
     std::ifstream fp;
     std::string s;
     std::vector<std::string> words;
 
-    fp.open (argv[1], std::ios::out | std::ios::app | std::ios::binary);
+    fp.open(argv[1], std::ios::out | std::ios::app | std::ios::binary);
 
-    while (fp>> s ){
+    while (fp >> s) {
         s.erase(std::remove_if(s.begin(), s.end(), [](char c) { return !std::isalnum(c); }), s.end());
         std::string word;
-        for(auto c : s) { word += std::tolower(c);}
+        for (auto c : s) { word += std::tolower(c); }
 
 
 //        if(std::find(words.begin(), words.end(), word) == words.end()) {
-            words.push_back(word);
-            word.clear();
+        words.push_back(word);
+        word.clear();
 //        } else {
 //            continue;
 //        }
@@ -43,35 +43,67 @@ int main(int argc, char* argv[]) {
     auto *tst = new TST();
     auto *trie = new Trie();
 
+//
+//    auto autoCompleteInitTST = std::chrono::steady_clock::now();
+//    tst->buildTST(words);
+//    auto autoCompleteFinishTST = std::chrono::steady_clock::now();
+//    auto autoCompleteTimeTST = std::chrono::duration_cast<std::chrono::microseconds>(
+//            autoCompleteFinishTST - autoCompleteInitTST);
+//    std::cout << "Time taken to build the standard Trie is " << autoCompleteTimeTST.count()
+//              << " microseconds and space occupied by it is ";
+//    std::cout << std::endl;
+//    auto autoCompleteInitTrie = std::chrono::steady_clock::now();
+//    trie->buildTrie(words);
+//    auto autoCompleteFinishTrie = std::chrono::steady_clock::now();
+//    auto autoCompleteTimeTrie = std::chrono::duration_cast<std::chrono::microseconds>(
+//            autoCompleteFinishTrie - autoCompleteInitTrie);
+//    std::cout << "Time taken to build the standard Trie is " << autoCompleteTimeTrie.count()
+//              << " microseconds and space occupied by it is ";
+//    std::cout << std::endl;
 
-    auto autoCompleteInitTST = std::chrono::steady_clock::now();
-    tst->buildTST(words);
-    auto autoCompleteFinishTST = std::chrono::steady_clock::now();
-    auto autoCompleteTimeTST =  std::chrono::duration_cast<std::chrono::microseconds>(autoCompleteFinishTST - autoCompleteInitTST);
-    std::cout << "Time taken to build the standard Trie is " <<  autoCompleteTimeTST.count() << " microseconds and space occupied by it is ";
-    std::cout<<std::endl;
-    auto autoCompleteInitTrie = std::chrono::steady_clock::now();
-    trie->buildTrie(words);
-    auto autoCompleteFinishTrie = std::chrono::steady_clock::now();
-    auto autoCompleteTimeTrie =  std::chrono::duration_cast<std::chrono::microseconds>(autoCompleteFinishTrie - autoCompleteInitTrie);
-    std::cout << "Time taken to build the standard Trie is " <<  autoCompleteTimeTrie.count() << " microseconds and space occupied by it is ";
+    trie->insert("food");
+    trie->insert("fo");
+    trie->insert("fun");
+    trie->insert("funky");
+    trie->insert("funny");
+    trie->insert("so");
+    trie->insert("faggot");
+    trie->insert("okay");
+    trie->insert("lesbo");
+
+
+
+    tst->insert("food");
+    tst->insert("fo");
+    tst->insert("fun");
+    tst->insert("funky");
+    tst->insert("funny");
+    tst->insert("so");
+    tst->insert("faggot");
+    tst->insert("okay");
+    tst->insert("lesbo");
+    tst->insert("asshole");
+    tst->insert("bitch");
+    tst->insert("zebra");
+
+
+
+
+    std::string prefix = "f";
     std::cout << std::endl;
-    std::string prefix = "q";
-    std::cout << std::endl;
-    auto x =  tst->startsWith(prefix);
-    std::cout << "For TST" << std::endl;
-    for(auto i : x)
-    {
+    auto x = tst->startsWith(prefix);
+    std::cout << "For TST " << tst->_numNodesInTree()<<std::endl;
+    for (auto i : x) {
         std::cout << i << ", ";
     }
-    std::cout<<std::endl;
+    std::cout << std::endl;
     std::cout << "For TrieNode:" << std::endl;
-    int i ;
-    for(auto j : trie->startsWith(prefix))
-    {
-        std::cout << j << ", "; i++;
+    int i;
+    for (auto j : trie->startsWith(prefix)) {
+        std::cout << j << ", ";
+        i++;
     }
-    std::cout <<" " << std::endl;
+    std::cout << " " << std::endl;
 
 
 }

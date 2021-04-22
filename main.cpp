@@ -8,14 +8,6 @@
 #include <chrono>
 #include <functional>
 #include <algorithm>
-#include <algorithm>
-
-
-void remove_duplicates(std::vector<std::string>& vec)
-{
-    std::sort(vec.begin(), vec.end());
-    vec.erase(std::unique(vec.begin(), vec.end()), vec.end());
-}
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
@@ -50,47 +42,40 @@ int main(int argc, char* argv[]) {
     auto *tst = new TST();
     auto *trie = new Trie();
 
-////
-//    auto autoCompleteInitTST = std::chrono::steady_clock::now();
-//    tst->buildTST(words);
-//    auto autoCompleteFinishTST = std::chrono::steady_clock::now();
-//    auto autoCompleteTimeTST =  std::chrono::duration_cast<std::chrono::microseconds>(autoCompleteFinishTST - autoCompleteInitTST);
-//    std::cout << "Time taken to build the standard Trie is " <<  autoCompleteTimeTST.count() << " microseconds and space occupied by it is ";
 //
-//    std::cout<<std::endl;
-//
-//    auto autoCompleteInitTrie = std::chrono::steady_clock::now();
-//    trie->buildTrie(words);
-//    auto autoCompleteFinishTrie = std::chrono::steady_clock::now();
-//    auto autoCompleteTimeTrie =  std::chrono::duration_cast<std::chrono::microseconds>(autoCompleteFinishTrie - autoCompleteInitTrie);
+    auto autoCompleteInitTST = std::chrono::steady_clock::now();
+    tst->buildTST(words);
+    auto autoCompleteFinishTST = std::chrono::steady_clock::now();
+    auto autoCompleteTimeTST =  std::chrono::duration_cast<std::chrono::microseconds>(autoCompleteFinishTST - autoCompleteInitTST);
+    std::cout << "Time taken to build the standard Trie is " <<  autoCompleteTimeTST.count() << " microseconds and space occupied by it is ";
 
-//    std::cout << "Time taken to build the standard Trie is " <<  autoCompleteTimeTrie.count() << " microseconds and space occupied by it is ";
-//    std::cout << std::endl;
+    std::cout<<std::endl;
+
+    auto autoCompleteInitTrie = std::chrono::steady_clock::now();
+    trie->buildTrie(words);
+    auto autoCompleteFinishTrie = std::chrono::steady_clock::now();
+    auto autoCompleteTimeTrie =  std::chrono::duration_cast<std::chrono::microseconds>(autoCompleteFinishTrie - autoCompleteInitTrie);
+
+    std::cout << "Time taken to build the standard Trie is " <<  autoCompleteTimeTrie.count() << " microseconds and space occupied by it is ";
+    std::cout << std::endl;
 
 
     //tst->buildTST(words);
 //   trie->buildTrie(words);
-    std::string prefix = "go";
+    std::string prefix = "de";
 
 
     std::cout << std::endl;
 
 
 
-    tst->insert("going");
-
-    tst->insert("go");
-
-    tst->insert("good");
-
-    tst->insert("got");
-
-//    trie->insert("sawn");
-//    trie->insert("sheltered");
-//    trie->insert("shield");
-//    trie->insert("shield");
-
-
+//    tst->insert("going");
+//
+//    tst->insert("go");
+//
+//    tst->insert("good");
+//
+//    tst->insert("got");
 
     auto x =  tst->startsWith(prefix);
 

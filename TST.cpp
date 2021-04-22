@@ -15,13 +15,15 @@ tNode *TST::insertLocal(tNode *rt, std::string s, int idx) {
         }
     }
 
-//    }
     if (s[idx] < rt->getChar()) {
         rt->setleft((insertLocal(rt->_left(), s, idx)));
     } else if (s[idx] > rt->getChar()) {
         rt->setright(insertLocal(rt->_right(), s, idx));
     } else {
+        if(idx == s.size()-1) rt->_isEndOfWord() = true;
         rt->setmiddle(insertLocal(rt->_middle(), s, idx + 1));
+
+
     }
     return rt;
 }
@@ -41,7 +43,6 @@ void TST::dfsLocal(std::vector<std::string> &answer, std::string suffix, tNode *
         suffix += rt->getChar();
         if(rt->_isEndOfWord() && rt->getChar()){
             answer.push_back(prefix + suffix);
-            rt->isDup() = true;
         }
         dfsLocal(answer, suffix, rt->_middle());
 

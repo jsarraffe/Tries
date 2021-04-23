@@ -7,6 +7,7 @@
 #include <map>
 #include <vector>
 
+
 class TrieNode{
 public:
      TrieNode(char c) : c(c), isEndOfWord(false), isVisited(false){
@@ -23,12 +24,13 @@ private:
     bool isVisited;
 
 
+
 };
 
 
 class Trie {
 public:
-    Trie(): root(new TrieNode('0/')){}
+    Trie(): root(new TrieNode('/')){}
     void insert(std::string word);
     void insertHelper(TrieNode* currNode, std::string word, int index);
     TrieNode* getNode(std::string word);

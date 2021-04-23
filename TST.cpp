@@ -34,7 +34,6 @@ void TST::insert(std::string s) {
     this->root = insertLocal(this->root, s, 0);
 }
 void TST::dfsLocal(std::vector<std::string> &answer, std::string suffix, tNode *rt) {
-    //dfs for leaf nodes in all subtrees, and those that are words
     if(rt == nullptr){
         return;
     }
@@ -51,6 +50,7 @@ void TST::dfsLocal(std::vector<std::string> &answer, std::string suffix, tNode *
     }
 }
 std::vector<std::string> TST::dfsWord(tNode *rt) {
+    //traversal given a given node. Used for autocomplete, dfs until for nodes for all children
     std::vector<std::string> answer;
     std::string suffix;
     dfsLocal(answer, suffix, rt->_middle());
@@ -58,7 +58,7 @@ std::vector<std::string> TST::dfsWord(tNode *rt) {
 
 }
 tNode* TST::getNode(std::string prefix) {
-    //first search for the node where the prefix matches, do dfs from there
+    //returns the node if it is in the data strucutre
     this->_prefix() = prefix;
     std::vector<std::string> answer;
     std::string suffix;
@@ -78,8 +78,7 @@ tNode* TST::getNode(std::string prefix) {
             curr = curr->_middle();
         } else { return nullptr; }
     }
-    this->_nodeToDFSfrom(prev);
-    //std::cout << "Debug test" << std::endl;
+
    return prev;
 }
 std::vector<std::string> TST::startsWith(std::string prefix) {

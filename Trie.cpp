@@ -28,6 +28,7 @@ void Trie::insertHelper(TrieNode *currNode, std::string word, int index) {
 }
 
 TrieNode *Trie::getNode(std::string word) {
+    //returns the node if it is in the data strucutre
     return getNodeHelper(root, word, 0);
 }
 
@@ -73,7 +74,6 @@ std::vector<std::string> Trie::startsWith(std::string prefix) {
 }
 
 void Trie::dfsLocal(TrieNode *r, std::vector<std::string> &answer, std::string &suffix) {
-
 
     if(r->_isEndOfWord()){
         answer.push_back(prefix + suffix);

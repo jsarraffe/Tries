@@ -40,13 +40,11 @@ public:
     std::string &_prefix(){return prefix;}
     void insert(std::string s);
     tNode *insertLocal(tNode *root, std::string s, int idx);
-    tNode _nodeToDFSfrom(tNode *ntdfs){nodeToDFSfom = ntdfs;}
     int &_numNodesInTree(){return numNodesInTree;}
 
 private:
     int numNodesInTree = 0;
     std::string prefix;
-    tNode *nodeToDFSfom;
     tNode *root;
 };
 

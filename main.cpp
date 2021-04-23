@@ -16,16 +16,11 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
-
-
-
     std::string filename = argv[1];
     std::cout << filename << std::endl;
     int flag = atoi(argv[2]);
 
-    std::cout <<"----------------------"<<std::endl;
-    std::cout <<"| ENTER 'q' TO EXIT  |"<< std::endl;
-    std::cout <<"----------------------"<<std::endl;
+
     std::ifstream fp;
     std::string s;
     std::vector<std::string> words;
@@ -58,25 +53,20 @@ int main(int argc, char *argv[]) {
             autoCompleteFinishTrie - autoCompleteInitTrie);
 
     if(flag== 1){
+        std::cout <<"----------------------"<<std::endl;
+        std::cout <<"| ENTER '1' TO EXIT  |"<< std::endl;
+        std::cout <<"----------------------"<<std::endl;
         std::cout << std::endl;
         std::cout <<  "Time taken to build the standard Trie is " << autoCompleteTimeTrie.count()
                   << " microseconds and space occupied by it is " << trie->_numNodesInTree()*26<< " pointers"<<std::endl;
-
         std::cout << "Time taken to build the BST based Trie is " << autoCompleteTimeTST.count()
                   << " microseconds and space occupied by it is " << tst->_numNodesInTree() << " pointers"<<std::endl;
-
-
-
         std::string userInput;
-
-
-
-
-        while(userInput != "quit"){
+        while(true){
             std::cout<<std::endl;
             std::cout << "Enter search string: ";
             std::cin >> userInput;
-            if(userInput == "q"){
+            if(userInput == "1"){
                 exit(1);
             }
             auto trieSearchInit = std::chrono::steady_clock::now();
@@ -84,7 +74,6 @@ int main(int argc, char *argv[]) {
             auto trieSearchFinish = std::chrono::steady_clock::now();
             auto trieSearch = std::chrono::duration_cast<std::chrono::microseconds>(
                     trieSearchFinish - trieSearchInit);
-
             std::cout << "Time taken to search in the standard Trie is: "<< trieSearch.count() << " microseconds" <<std::endl;
             std::cout << "Auto-complete results using standard Trie are: ";
 
@@ -111,14 +100,9 @@ int main(int argc, char *argv[]) {
 
             std::cout << "Time taken to search in the BST based Trie is "<< trieSearch.count() << " microseconds" <<std::endl;
             std::cout << "Auto-complete results using BST based Trie are: ";
-
-
-
-
             auto tstAutoInit = std::chrono::steady_clock::now();
             auto x = tst->startsWith(userInput);
             for (auto i : x) {
-
                 if(i==x[x.size()-1]){
                     std::cout << i << " ";
                 }else{
@@ -128,30 +112,40 @@ int main(int argc, char *argv[]) {
             auto tstAutoFinish = std::chrono::steady_clock::now();
             auto tstAuto = std::chrono::duration_cast<std::chrono::microseconds>(
                     tstAutoFinish - tstAutoInit);
-
             std::cout << "\nTime taken to find auto-complete results in the BST based Trie is "<< tstAuto.count() << " microseconds" <<std::endl;
-
         }
     }
+    else if(flag = '2'){
 
 
 
 
+        auto trieSAinit = std::chrono::steady_clock::now();
+        for(auto word : words){
+            trie->getNode(word)->_isEndOfWord();
+        }
+        auto trieSAfinish = std::chrono::steady_clock::now();
+        auto trieAuto = std::chrono::duration_cast<std::chrono::microseconds>(
+                trieSAfinish - trieSAinit);
 
-    for(auto word : words){
-        tst->getNode("pigs")->_isEndOfWord();
-        trie->getNode("pigs")->_isEndOfWord();
+        auto tstSAinit = std::chrono::steady_clock::now();
+        for(auto word : words){
+            tst->getNode(word)->_isEndOfWord();
+        }
+        auto tstSAfinish = std::chrono::steady_clock::now();
+        auto tstAuto = std::chrono::duration_cast<std::chrono::microseconds>(
+                tstSAfinish - tstSAinit);
+
+        std::cout <<  "Time taken to build the standard Trie is " << autoCompleteTimeTrie.count()
+                  << " microseconds and space occupied by it is " << trie->_numNodesInTree()*26<< " pointers"<<std::endl;
+        std::cout << "Time taken to build the BST based Trie is " << autoCompleteTimeTST.count()
+                  << " microseconds and space occupied by it is " << tst->_numNodesInTree() << " pointers"<<std::endl;
+        std::cout << std::endl;
+
+
+        std::cout << "Time taken to search all the strings in the standard Trie is  "<< trieAuto.count() << " microseconds" <<std::endl;
+        std::cout << "Time taken to search all the strings in the BST based Trie is "<< tstAuto.count() << " microseconds" <<std::endl;
+
     }
-
-   if(tst->getNode("pigs")->_isEndOfWord()) {
-       std::cout << "true" << std::endl;
-   }
-
-    if(trie->getNode("pigs")->_isEndOfWord()) {
-        std::cout << "true" << std::endl;
-    }
-
-
-
 
 }
